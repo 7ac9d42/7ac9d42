@@ -8,7 +8,7 @@
   <a href="https://home.kuapt.top/">HomePage</a> • 
   <a href="https://blog.kuapt.top/">Blog</a> • 
   <a href="mailto:7ac9d42@kuapt.top">Email</a> • 
-  <a href="https://t.me/tg_7ac9d42">Telegram</a>
+  <a href="https://t.me/PM_7ac9d42_bot">Telegram</a>
 </p>
 
 <table width="100%" align="center">
