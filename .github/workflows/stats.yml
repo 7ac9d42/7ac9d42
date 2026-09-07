@@ -1,0 +1,60 @@
+name: Update README Cards
+
+on:
+  schedule:
+    - cron: "0 0 * * *" # 每天午夜自动运行
+  workflow_dispatch: # 支持手动一键触发
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Generate Stats Card (Dark)
+        uses: stats-organization/github-readme-stats-action@e52ecffb9b500c9f8532aff89937973d64706446 # v2
+        with:
+          card: stats
+          options: username=7ac9d42&show_icons=true&hide_border=true&include_all_commits=true&count_private=true&role=OWNER,ORGANIZATION_MEMBER,COLLABORATOR&bg_color=00000000&theme=dark
+          path: profile/stats-dark.svg
+          token: ${{ secrets.STATS_TOKEN || secrets.GITHUB_TOKEN }}
+
+      - name: Generate Stats Card (Light)
+        uses: stats-organization/github-readme-stats-action@e52ecffb9b500c9f8532aff89937973d64706446 # v2
+        with:
+          card: stats
+          options: username=7ac9d42&show_icons=true&hide_border=true&include_all_commits=true&count_private=true&role=OWNER,ORGANIZATION_MEMBER,COLLABORATOR&bg_color=00000000
+          path: profile/stats-light.svg
+          token: ${{ secrets.STATS_TOKEN || secrets.GITHUB_TOKEN }}
+
+      - name: Generate Top Languages Card (Dark)
+        uses: stats-organization/github-readme-stats-action@e52ecffb9b500c9f8532aff89937973d64706446 # v2
+        with:
+          card: top-langs
+          options: username=7ac9d42&hide_border=true&layout=compact&langs_count=6&size_weight=0.5&count_weight=0.5&count_private=true&hide=markdown,md,java,vue,css,html&bg_color=00000000&theme=dark
+          path: profile/top-langs-dark.svg
+          token: ${{ secrets.STATS_TOKEN || secrets.GITHUB_TOKEN }}
+
+      - name: Generate Top Languages Card (Light)
+        uses: stats-organization/github-readme-stats-action@e52ecffb9b500c9f8532aff89937973d64706446 # v2
+        with:
+          card: top-langs
+          options: username=7ac9d42&hide_border=true&layout=compact&langs_count=6&size_weight=0.5&count_weight=0.5&count_private=true&hide=markdown,md,java,vue,css,html&bg_color=00000000
+          path: profile/top-langs-light.svg
+          token: ${{ secrets.STATS_TOKEN || secrets.GITHUB_TOKEN }}
+
+      - name: Commit and Push Cards
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add profile/*.svg
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "chore: 自动同步 GitHub 统计卡片静态资源"
+            git push
+          fi
