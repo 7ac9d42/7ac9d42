@@ -1,7 +1,7 @@
 <h2 align="center">7ac9d42</h2>
 
 <p align="center">
-  “没有什么比‘感兴趣’更值得为之付出精力的了。”
+  “没有什么比‘感兴趣’更值得为之付出精力的了”
 </p>
 
 <p align="center">
@@ -13,24 +13,24 @@
 
 <table width="100%" align="center">
   <tr>
-    <td align="center" width="50%">
+    <td align="center" width="58%">
       <picture>
         <source
           media="(prefers-color-scheme: dark)"
           srcset="./profile/stats-dark.svg" />
         <img
           src="./profile/stats-light.svg"
-          height="175" alt="GitHub Stats" />
+          height="180" alt="GitHub Stats" />
       </picture>
     </td>
-    <td align="center" width="50%">
+    <td align="center" width="42%">
       <picture>
         <source
           media="(prefers-color-scheme: dark)"
           srcset="./profile/top-langs-dark.svg" />
         <img
           src="./profile/top-langs-light.svg"
-          height="175" alt="Top Languages" />
+          height="180" alt="Top Languages" />
       </picture>
     </td>
   </tr>
